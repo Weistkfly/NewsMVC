@@ -25,6 +25,7 @@ namespace NewsMVC2019_2820.Controllers
             foreach(var obj in objList)
             {
                 obj.Author = _db.Authors.FirstOrDefault(u => u.Id == obj.AuthorId);
+                obj.Category = _db.Categories.FirstOrDefault(u => u.Id == obj.CategoryId);
             }
             return View(objList);
         }
@@ -35,6 +36,11 @@ namespace NewsMVC2019_2820.Controllers
             {
                 News = new News(),
                 AuthorDropDown = _db.Authors.Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                }),
+                CategoryDropDown = _db.Categories.Select(i => new SelectListItem
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()
@@ -92,13 +98,21 @@ namespace NewsMVC2019_2820.Controllers
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()
+                }),
+                CategoryDropDown = _db.Categories.Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
                 })
             };
+
             if (id == null || id == 0)
             {
                 return NotFound();
             }
+
             authorVM.News = _db.News.Find(id);
+
             if (authorVM.News == null)
             {
                 return NotFound();

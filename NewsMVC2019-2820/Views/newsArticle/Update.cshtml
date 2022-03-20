@@ -21,8 +21,10 @@
                         <span asp-validation-for="News.AuthorId" class="text-danger"></span>
                     </div>
                     <div class="col-4">
-                        <label asp-for="News.CategoryId"></label>
-                        <input asp-for="News.CategoryId" class="form-control" />
+                        <label asp-for="News.Category"></label>
+                        <select asp-for="News.CategoryId" asp-items="@Model.CategoryDropDown" class="form-control">
+                            <option selected>--Select Category--</option>
+                        </select>
                         <span asp-validation-for="News.CategoryId" class="text-danger"></span>
                     </div>
                 </div>
