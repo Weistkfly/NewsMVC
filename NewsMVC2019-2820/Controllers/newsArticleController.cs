@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using NewsMVC2019_2820.Data;
 using NewsMVC2019_2820.Models;
+using NewsMVC2019_2820.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,21 +22,34 @@ namespace NewsMVC2019_2820.Controllers
         public IActionResult Index()
         {
             IEnumerable<News> objList = _db.News;
+            foreach(var obj in objList)
+            {
+                obj.Author = _db.Authors.FirstOrDefault(u => u.Id == obj.AuthorId);
+            }
             return View(objList);
         }
 
         public IActionResult Create()
         {
-            return View();
+            NewsVM authorVM = new NewsVM()
+            {
+                News = new News(),
+                AuthorDropDown = _db.Authors.Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                })
+            };
+            return View(authorVM);
         }  
 
         [HttpPost]
-        public IActionResult Create(News obj)
+        public IActionResult Create(NewsVM obj)
         {
             if (ModelState.IsValid)
             {
-                obj.Date = DateTime.Now;
-                _db.News.Add(obj);
+                obj.News.Date = DateTime.Now;
+                _db.News.Add(obj.News);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -70,24 +85,33 @@ namespace NewsMVC2019_2820.Controllers
 
         public IActionResult Update(int? id)
         {
+            NewsVM authorVM = new NewsVM()
+            {
+                News = new News(),
+                AuthorDropDown = _db.Authors.Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                })
+            };
             if (id == null || id == 0)
             {
                 return NotFound();
             }
-            var obj = _db.News.Find(id);
-            if (obj == null)
+            authorVM.News = _db.News.Find(id);
+            if (authorVM.News == null)
             {
                 return NotFound();
             }
-            return View(obj);
+            return View(authorVM);
         }
 
         [HttpPost]
-        public IActionResult Update(News obj)
+        public IActionResult Update(NewsVM obj)
         {
             if (ModelState.IsValid)
             {
-                _db.News.Update(obj);
+                _db.News.Update(obj.News);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }

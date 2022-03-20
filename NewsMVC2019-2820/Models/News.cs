@@ -16,10 +16,12 @@ namespace NewsMVC2019_2820.Models
         [Required]
         public string Content { get; set; }
         public DateTime Date { get; set; }
-        [Required]
-        public string Author { get; set; }
-        [Required]
-        public string Category { get; set; }
+        [ForeignKey("Author")]
+        public int AuthorId { get; set; }
+        public virtual Author Author { get; set; }
+        [ForeignKey("Category")]
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; }
        
     }
 }
