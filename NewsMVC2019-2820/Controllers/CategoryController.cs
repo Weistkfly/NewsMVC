@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NewsMVC2019_2820.Data;
 using NewsMVC2019_2820.Models;
 using System;
@@ -17,12 +18,14 @@ namespace NewsMVC2019_2820.Controllers
             _db = db;
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             IEnumerable<Category> objList = _db.Categories;
             return View(objList);
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -40,6 +43,7 @@ namespace NewsMVC2019_2820.Controllers
             return View(obj);
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(int? id)
         {
             if (id == null || id == 0)

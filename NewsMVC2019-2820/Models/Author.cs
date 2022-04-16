@@ -12,5 +12,6 @@ namespace NewsMVC2019_2820.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
+        
     }
 }

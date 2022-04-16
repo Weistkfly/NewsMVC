@@ -26,7 +26,9 @@ namespace NewsMVC2019_2820.Controllers
             {
                 obj.Author = _db.Authors.FirstOrDefault(u => u.Id == obj.AuthorId);
                 obj.Category = _db.Categories.FirstOrDefault(u => u.Id == obj.CategoryId);
+                obj.Country = _db.Countries.FirstOrDefault(u => u.Id == obj.CountryId);
             }
+           // var sortedObjtList = objList.
             return View(objList);
         }
 
@@ -41,6 +43,11 @@ namespace NewsMVC2019_2820.Controllers
                     Value = i.Id.ToString()
                 }),
                 CategoryDropDown = _db.Categories.Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                }),
+                CountryDropDown = _db.Countries.Select(i => new SelectListItem
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()
@@ -100,6 +107,11 @@ namespace NewsMVC2019_2820.Controllers
                     Value = i.Id.ToString()
                 }),
                 CategoryDropDown = _db.Categories.Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                }),
+                CountryDropDown = _db.Countries.Select(i => new SelectListItem
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()

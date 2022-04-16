@@ -22,6 +22,9 @@ namespace NewsMVC2019_2820.Models
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
-       
+        [ForeignKey("Countries")]
+        public int CountryId { get; set; }
+        public virtual Countries Country { get; set; }
+
     }
 }

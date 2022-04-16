@@ -27,6 +27,13 @@
                         </select>
                         <span asp-validation-for="News.CategoryId" class="text-danger"></span>
                     </div>
+                    <div class="col-4">
+                        <label asp-for="News.Country"></label>
+                        <select asp-for="News.CountryId" asp-items="@Model.CountryDropDown" class="form-control">
+                            <option selected>--Select Country--</option>
+                        </select>
+                        <span asp-validation-for="News.CountryId" class="text-danger"></span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <div>

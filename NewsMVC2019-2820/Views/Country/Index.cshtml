@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Countries>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Article countries</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Country" asp-action="Create" class="btn btn-primary">Add new country</a>
+        </div>
+    </div>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var country in Model)
+                {
+                    <tr>
+                        <td width="80%">@country.Name</td>
+                        <td>
+                            <div class="w-100 btn-group" role="group">
+                                <a asp-controller="Country" asp-action="Update" asp-route-Id="@country.Id" class="btn btn-primary mx-1">Update</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    else
+    {
+        <p>No countries added yet</p>
+    }
+</div>

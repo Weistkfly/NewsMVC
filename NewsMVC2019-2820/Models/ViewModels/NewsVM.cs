@@ -11,5 +11,6 @@ namespace NewsMVC2019_2820.Models.ViewModels
         public News News { get; set; }
         public IEnumerable<SelectListItem> AuthorDropDown { get; set; }
         public IEnumerable<SelectListItem> CategoryDropDown { get; set; }
+        public IEnumerable<SelectListItem> CountryDropDown { get; set; }
     }
 }
