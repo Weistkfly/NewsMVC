@@ -18,7 +18,6 @@ namespace NewsMVC2019_2820.Controllers
             _db = db;
         }
 
-        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             IEnumerable<Countries> objList = _db.Countries;

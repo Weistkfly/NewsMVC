@@ -33,6 +33,14 @@
 
                         @if (User.Identity.IsAuthenticated)
                         {
+
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                                </li>
+                            }
+
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
                             </li>
@@ -50,7 +58,7 @@
         </nav>
     </header>
     <div>
-        Loging: @User.Identity.Name
+        Signed in as: @User.Identity.Name
     </div>
 
     <div class="container">

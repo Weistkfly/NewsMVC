@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsMVC2019-2820", "NewsMVC2019-2820\NewsMVC2019-2820.csproj", "{AF8E9E7B-F040-460F-8B4B-F1A3E2C83DB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsMVC2019-2820", "NewsMVC2019-2820\NewsMVC2019-2820.csproj", "{AF8E9E7B-F040-460F-8B4B-F1A3E2C83DB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsAPI2019-2820", "NewsAPI2019-2820\NewsAPI2019-2820.csproj", "{2EC3B9BE-E0BC-4247-B74B-B92581E3BD5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{AF8E9E7B-F040-460F-8B4B-F1A3E2C83DB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF8E9E7B-F040-460F-8B4B-F1A3E2C83DB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF8E9E7B-F040-460F-8B4B-F1A3E2C83DB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EC3B9BE-E0BC-4247-B74B-B92581E3BD5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EC3B9BE-E0BC-4247-B74B-B92581E3BD5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EC3B9BE-E0BC-4247-B74B-B92581E3BD5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EC3B9BE-E0BC-4247-B74B-B92581E3BD5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
