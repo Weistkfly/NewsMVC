@@ -18,6 +18,7 @@ namespace NewsMVC2019_2820.Controllers
             _db = db;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             IEnumerable<Category> objList = _db.Categories;

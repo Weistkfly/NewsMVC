@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using NewsMVC2019_2820.Data;
 using NewsMVC2019_2820.Models;
@@ -19,6 +20,7 @@ namespace NewsMVC2019_2820.Controllers
             _db = db;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             IEnumerable<News> objList = _db.News;
@@ -32,6 +34,7 @@ namespace NewsMVC2019_2820.Controllers
             return View(objList);
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             NewsVM authorVM = new NewsVM()
@@ -82,6 +85,7 @@ namespace NewsMVC2019_2820.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
@@ -96,6 +100,7 @@ namespace NewsMVC2019_2820.Controllers
             return View(obj);
         }
 
+        [Authorize]
         public IActionResult Update(int? id)
         {
             NewsVM authorVM = new NewsVM()
